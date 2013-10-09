@@ -1,0 +1,58 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+     
+    <item
+        android:id="@+id/settings_btn1"
+        android:icon="@drawable/settings"
+        android:showAsAction="never"
+        android:title="Change background1"/>
+    <item
+        android:id="@+id/dummy"
+        android:showAsAction="never"
+        android:icon="@drawable/settings"
+        android:title="Change background2"/>
+    <item
+        android:id="@+id/settings_btn3"
+        android:icon="@drawable/settings"
+        android:showAsAction="never"
+        android:title="Change background3"/>
+    <item
+        android:id="@+id/imp_btn"
+        android:icon="@drawable/imp"
+        android:showAsAction="never"
+        android:title="Import"/>
+    <item
+        android:id="@+id/exp_btn"
+        android:icon="@drawable/exp"
+        android:showAsAction="never"
+        android:title="Export"/>
+    <item
+        android:id="@+id/last_10"
+        android:showAsAction="always|withText"
+        android:title="Last 10"/>
+    <item
+        android:id="@+id/last_20"
+        android:showAsAction="always|withText"
+        android:title="Last 20"/>
+    <item
+        android:id="@+id/all_items"
+        android:showAsAction="always|withText"
+        android:title="All"/>
+    <item
+        android:id="@+id/order_daily"
+        android:showAsAction="always|withText"
+        android:title="Days"/>
+    <item
+        android:id="@+id/order_weekly"
+        android:showAsAction="always|withText"
+        android:title="Weeks"/>
+    <item
+        android:id="@+id/order_monthly"
+        android:showAsAction="always|withText"
+        android:title="Months"/>
+    <item
+        android:id="@+id/back_btn"
+        android:showAsAction="always|withText"
+        android:title="Back"/>
+
+</menu>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/list_selector"
+    android:orientation="horizontal"
+    android:padding="0dip" >
+
+    <!-- Title Of Song -->
+
+
+    <!-- Artist Name -->
+
+
+    <!-- Rightend Duration -->
+
+    <Button
+        android:id="@+id/categoryImg"
+        android:layout_width="57sp"
+        android:layout_height="57sp"
+        android:focusable="false"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:id="@+id/categoryName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/categoryImg"
+        android:layout_alignBottom="@+id/categoryImg"
+        android:layout_centerHorizontal="true"
+        android:text="Rihanna Love the way lie"
+        android:textColor="#040404"
+        android:textSize="16dip"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+    <TextView
+        android:id="@+id/textPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/categoryName"
+        android:layout_alignBottom="@+id/categoryName"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dip"
+        android:text="355"
+        android:textColor="#10bcc9"
+        android:textSize="16dip"
+        android:textStyle="bold" />
+
+</RelativeLayout>

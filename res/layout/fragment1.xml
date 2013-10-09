@@ -1,0 +1,32 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/fragment1_container"
+     >
+
+    <ListView
+        android:id="@+id/listitem_lv"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add_item_button"
+        android:divider="#FFFFFF"
+        android:dividerHeight="1dp"
+        android:listSelector="@drawable/list_selector"
+        tools:listitem="@layout/list_row" >
+
+    </ListView>
+
+    <Button
+        android:id="@+id/add_item_button"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_weight="1"
+        android:background="#99000000"
+        android:focusableInTouchMode="false"
+        android:text="Add new item"
+        android:textColor="#FFFFFF" />
+
+</RelativeLayout>

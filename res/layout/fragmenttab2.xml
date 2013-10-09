@@ -1,0 +1,31 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:id="@+id/fragment2_container">
+
+    <ListView
+        android:id="@+id/cat_lv"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/plusCat"
+        android:divider="#FFFFFF"
+        android:dividerHeight="1dp"
+        android:listSelector="@drawable/list_selector2"
+        tools:listitem="@layout/list_row_2" >
+
+    </ListView>
+
+    <Button
+        android:id="@+id/plusCat"
+        android:layout_width="fill_parent"
+        android:layout_height="40sp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_weight="1"
+        android:background="#99000000"
+        android:focusableInTouchMode="false"
+        android:text="Add new category"
+        android:textColor="#FFFFFF" />
+
+</RelativeLayout>
