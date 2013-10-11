@@ -68,41 +68,24 @@ public class MainActivity extends SherlockFragmentActivity {
 		// Generate title
 		title = new String[] { "Shop", "Stats", "Categories" };
 
-		// Generate subtitle
 
 		// Generate icon
 		icon = new int[] { R.drawable.side_shopping, R.drawable.side_stat,
 				R.drawable.side_categ };
 
-		// Locate DrawerLayout in drawer_main.xml
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-		// Locate ListView in drawer_main.xml
 		mDrawerList = (ListView) findViewById(R.id.listview_drawer);
 
-		// Set a custom shadow that overlays the main content when the drawer
-		// opens
-
-		// mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
-		// GravityCompat.START);
-
-		// Pass string arrays to MenuListAdapter
 		mMenuAdapter = new MenuListAdapter(MainActivity.this, title, icon);
 
-		// Set the MenuListAdapter to the ListView
 		mDrawerList.setAdapter(mMenuAdapter);
-
-		// Capture listview menu item click
 		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
 		// Enable ActionBar app icon to behave as action to toggle nav drawer
 		getSupportActionBar().setHomeButtonEnabled(true);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		// getSupportActionBar();
 		getSupportActionBar().setDisplayOptions(0, ActionBar.DISPLAY_SHOW_HOME);
 
-		// ActionBarDrawerToggle ties together the the proper interactions
-		// between the sliding drawer and the action bar app icon
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
 				R.drawable.sheep_logo, R.string.drawer_open,
 				R.string.drawer_close) {
@@ -114,7 +97,6 @@ public class MainActivity extends SherlockFragmentActivity {
 
 			public void onDrawerOpened(View drawerView) {
 				// TODO Auto-generated method stub
-				// Set the title on the action when drawer open
 				getSupportActionBar().setTitle(mDrawerTitle);
 
 				super.onDrawerOpened(drawerView);
@@ -174,8 +156,7 @@ public class MainActivity extends SherlockFragmentActivity {
 	@Override
 	public void onRestoreInstanceState(Bundle savedInstanceState) {
 		super.onRestoreInstanceState(savedInstanceState);
-		// Restore UI state from the savedInstanceState.
-		// This bundle has also been passed to onCreate.
+
 		dark_bkg = savedInstanceState.getBoolean("darkBkg");
 	}
 
@@ -194,7 +175,7 @@ public class MainActivity extends SherlockFragmentActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	// ListView click listener in the navigation drawer
+
 	private class DrawerItemClickListener implements
 			ListView.OnItemClickListener {
 		@Override
@@ -207,7 +188,7 @@ public class MainActivity extends SherlockFragmentActivity {
 	private void selectItem(int position) {
 
 		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-		// Locate Position
+
 		switch (position) {
 		case 0:
 			ft.replace(R.id.content_frame, fragment1);
@@ -222,7 +203,7 @@ public class MainActivity extends SherlockFragmentActivity {
 		ft.commit();
 		mDrawerList.setItemChecked(position, true);
 
-		// Get the title followed by the position
+
 		setTitle(title[position]);
 		// Close drawer
 		mDrawerLayout.closeDrawer(mDrawerList);
@@ -231,14 +212,13 @@ public class MainActivity extends SherlockFragmentActivity {
 	@Override
 	protected void onPostCreate(Bundle savedInstanceState) {
 		super.onPostCreate(savedInstanceState);
-		// Sync the toggle state after onRestoreInstanceState has occurred.
+
 		mDrawerToggle.syncState();
 	}
 
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
-		// Pass any configuration change to the drawer toggles
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
