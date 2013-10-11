@@ -31,9 +31,9 @@ public class MainActivity extends SherlockFragmentActivity {
 	String[] title;
 	String[] subtitle;
 	int[] icon;
-	Fragment fragment1 = new Fragment1();
-	Fragment fragment2 = new Fragment2();
-	Fragment fragment3 = new Fragment3();
+	Fragment fragment1 = new FragmentShopping();
+	Fragment fragment2 = new FragmentCategories();
+	Fragment fragment3 = new FragmentStat();
 	private CharSequence mDrawerTitle;
 	private CharSequence mTitle;
 

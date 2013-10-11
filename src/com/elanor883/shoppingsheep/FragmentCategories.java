@@ -39,7 +39,7 @@ import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 
 
-public class Fragment2 extends SherlockFragment {
+public class FragmentCategories extends SherlockFragment {
 
 	String text = "0";
 	String color = "R.drawable.btn1bg";
@@ -294,7 +294,7 @@ public class Fragment2 extends SherlockFragment {
 	}
 
 	public void refreshCurrentFragment() {
-		Fragment2 fragment = new Fragment2();
+		FragmentCategories fragment = new FragmentCategories();
 		FragmentTransaction ft = getFragmentManager().beginTransaction();
 		ft.replace(R.id.fragment2_container, fragment);
 		ft.commit();

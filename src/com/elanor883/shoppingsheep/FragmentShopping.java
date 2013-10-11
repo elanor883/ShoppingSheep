@@ -44,7 +44,7 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 
-public class Fragment1 extends SherlockFragment {
+public class FragmentShopping extends SherlockFragment {
 
 	static final String KEY_CAT = "cat";
 	static final String KEY_DATE = "date";
@@ -362,7 +362,7 @@ public class Fragment1 extends SherlockFragment {
 		itemList.clear();
 		mAdapterList.notifyDataSetChanged();
 		Log.d("fr1-refresh", "refressss");
-		Fragment1 fragment = new Fragment1();
+		FragmentShopping fragment = new FragmentShopping();
 		FragmentTransaction ft = getFragmentManager().beginTransaction();
 		ft.replace(R.id.fragment1_container, fragment);
 		// ft.addToBackStack(null);

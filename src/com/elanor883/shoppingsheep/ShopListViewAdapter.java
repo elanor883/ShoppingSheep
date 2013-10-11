@@ -79,9 +79,9 @@ public class ShopListViewAdapter extends BaseAdapter {
 		song = data.get(position);
 
 		// Setting all values in listview
-		title.setText(song.get(Fragment3.KEY_TITLE));
-		artist.setText(song.get(Fragment3.KEY_SUBTITLE));
-		duration.setText(song.get(Fragment3.KEY_CORNER));
+		title.setText(song.get(FragmentStat.KEY_TITLE));
+		artist.setText(song.get(FragmentStat.KEY_SUBTITLE));
+		duration.setText(song.get(FragmentStat.KEY_CORNER));
 
 		if (MainActivity.dark_bkg == true) {
 			vi.setBackgroundColor(Color.BLACK);

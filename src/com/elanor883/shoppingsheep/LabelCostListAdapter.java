@@ -58,12 +58,12 @@ public class LabelCostListAdapter extends BaseAdapter {
         mylist = data.get(position);
  
         // Setting all values in listview
-        title.setText(mylist.get(Fragment4.KEY_TITLE));
-        price.setText(mylist.get(Fragment4.KEY_CORNER));
+        title.setText(mylist.get(FragmentDetail.KEY_TITLE));
+        price.setText(mylist.get(FragmentDetail.KEY_CORNER));
      //   btn.setText(mylist.get(FragmentTab2.KEY_T));
      //   Resources res = vi.getResources();
      //   Drawable drawable = res.getDrawable(R.drawable.btn1bg);
-        btn.setBackgroundResource(Integer.parseInt((mylist.get(Fragment4.KEY_IMG))));
+        btn.setBackgroundResource(Integer.parseInt((mylist.get(FragmentDetail.KEY_IMG))));
         
 
 		if (MainActivity.dark_bkg  == true) {

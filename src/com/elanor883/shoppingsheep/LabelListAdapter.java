@@ -57,11 +57,11 @@ public class LabelListAdapter extends BaseAdapter {
         mylist = data.get(position);
  
         // Setting all values in listview
-        title.setText(mylist.get(Fragment2.KEY_TYPE));
+        title.setText(mylist.get(FragmentCategories.KEY_TYPE));
      //   btn.setText(mylist.get(FragmentTab2.KEY_T));
      //   Resources res = vi.getResources();
      //   Drawable drawable = res.getDrawable(R.drawable.btn1bg);
-        btn.setBackgroundResource(Integer.parseInt((mylist.get(Fragment2.KEY_COLOR))));
+        btn.setBackgroundResource(Integer.parseInt((mylist.get(FragmentCategories.KEY_COLOR))));
        // int id = vi.getResources().getIdentifier(mylist.get(FragmentTab2.KEY_COLOR), null, null);
     // Log.d("res id", ""+id);
         // imageLoader.DisplayImage(song.get(CustomizedListView.KEY_THUMB_URL), thumb_image);

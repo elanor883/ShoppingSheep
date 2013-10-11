@@ -39,7 +39,7 @@ import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 
 
-public class Fragment3 extends SherlockFragment {
+public class FragmentStat extends SherlockFragment {
 
 	static final String KEY_TITLE = "title";
 	static final String KEY_SUBTITLE = "sub";
@@ -133,11 +133,11 @@ public class Fragment3 extends SherlockFragment {
 
 			}
 			
-			Log.d("fr3", "visibility" + Fragment2.update);
+			Log.d("fr3", "visibility" + FragmentCategories.update);
 			
-			if(Fragment2.update == true)
+			if(FragmentCategories.update == true)
 			{
-				Fragment2.update = false;
+				FragmentCategories.update = false;
 				Log.d("fr3", "visibility");
 				groupByDay();
 				
@@ -249,7 +249,7 @@ public class Fragment3 extends SherlockFragment {
 					isDetailActive = true;
 				}
 
-				Log.d("detail1", "" + Fragment3.isDetailActive);
+				Log.d("detail1", "" + FragmentStat.isDetailActive);
 				showDetails(position);
 			}
 
@@ -346,7 +346,7 @@ public class Fragment3 extends SherlockFragment {
 			p2.weight = 2;
 			l2.setLayoutParams(p2);
 
-			Fragment4 aFrag = new Fragment4();
+			FragmentDetail aFrag = new FragmentDetail();
 			getFragmentManager().beginTransaction()
 					.replace(R.id.detail32, aFrag).commit();
 
@@ -363,7 +363,7 @@ public class Fragment3 extends SherlockFragment {
 			p2.weight = 1;
 			l2.setLayoutParams(p2);
 
-			Fragment4 aFrag = new Fragment4();
+			FragmentDetail aFrag = new FragmentDetail();
 			FragmentTransaction ft = getFragmentManager().beginTransaction();
 			ft.replace(R.id.detail32, aFrag);
 			// ft.addToBackStack(null);
@@ -523,7 +523,7 @@ public class Fragment3 extends SherlockFragment {
 
 		else {
 			Log.d("fr32222", "detail-settings");
-			Fragment3 fr3 = new Fragment3();
+			FragmentStat fr3 = new FragmentStat();
 			// ((ShopListViewAdapter)(FragmentTab3b.lv.getAdapter())).notifyDataSetChanged();
 			FragmentTransaction ft = getFragmentManager().beginTransaction();
 			ft.replace(R.id.detail32, fr3);
@@ -553,7 +553,7 @@ public class Fragment3 extends SherlockFragment {
 
 		if (isDetailActive) {
 			Log.d("fr32222", "detail-settings");
-			Fragment4 aFrag = new Fragment4();
+			FragmentDetail aFrag = new FragmentDetail();
 			FragmentTransaction ft = getFragmentManager().beginTransaction();
 			ft.replace(R.id.detail32, aFrag);
 			// ft.addToBackStack(null);
@@ -578,19 +578,19 @@ public class Fragment3 extends SherlockFragment {
 	}
 
 	public void refreshMainFragment() {
-		Fragment3.pos = -1;
-		Fragment3 fr3 = new Fragment3();
+		FragmentStat.pos = -1;
+		FragmentStat fr3 = new FragmentStat();
 		// ((ShopListViewAdapter)(FragmentTab3b.lv.getAdapter())).notifyDataSetChanged();
 		FragmentTransaction ft = getFragmentManager().beginTransaction();
 		ft.replace(R.id.detail32, fr3);
 
-		Fragment3.isDetailActive = false;
+		FragmentStat.isDetailActive = false;
 		// fr3.setPos(-1);
-		Log.d("visszaallit", "" + Fragment3.pos);
+		Log.d("visszaallit", "" + FragmentStat.pos);
 		// ft.addToBackStack(null);
 		ft.commit();
 
-		Log.d("detail2", "" + Fragment3.isDetailActive);
+		Log.d("detail2", "" + FragmentStat.isDetailActive);
 	}
 
 	public void groupByWeek() {

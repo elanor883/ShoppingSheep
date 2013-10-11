@@ -28,7 +28,7 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 
 
-public class Fragment4 extends SherlockFragment {
+public class FragmentDetail extends SherlockFragment {
 
 	static final String KEY_CAT = "cat";
 	static final String KEY_DATE = "date";
@@ -122,16 +122,16 @@ public class Fragment4 extends SherlockFragment {
 		
 		setBkg();
 		
-		if(Fragment3.group == 0)
+		if(FragmentStat.group == 0)
 		{
 			groupByDayResult();
 		}
-		else if(Fragment3.group == 1)
+		else if(FragmentStat.group == 1)
 		{
 			groupByWeekResult();
 		}
 		
-		else if(Fragment3.group == 2)
+		else if(FragmentStat.group == 2)
 		{
 			groupByMonthResult();
 		}
@@ -227,19 +227,19 @@ public class Fragment4 extends SherlockFragment {
 	}
 
 	public void refreshMainFragment() {
-		Fragment3.pos = -1;
-		Fragment3 fr3 = new Fragment3();
+		FragmentStat.pos = -1;
+		FragmentStat fr3 = new FragmentStat();
 		// ((ShopListViewAdapter)(FragmentTab3b.lv.getAdapter())).notifyDataSetChanged();
 		FragmentTransaction ft = getFragmentManager().beginTransaction();
 		ft.replace(R.id.detail32, fr3);
 
-		Fragment3.isDetailActive = false;
+		FragmentStat.isDetailActive = false;
 		// fr3.setPos(-1);
-		Log.d("visszaallit", "" + Fragment3.pos);
+		Log.d("visszaallit", "" + FragmentStat.pos);
 		// ft.addToBackStack(null);
 		ft.commit();
 
-		Log.d("detail2", "" + Fragment3.isDetailActive);
+		Log.d("detail2", "" + FragmentStat.isDetailActive);
 	}
 	
 	public void groupByDayResult()
@@ -251,7 +251,7 @@ public class Fragment4 extends SherlockFragment {
 		for (ShopList item : shoplist2) {
 			String date = item.getDate();
 			String type = item.getTypeName();
-			if (date.equals(Fragment3.selected)) {
+			if (date.equals(FragmentStat.selected)) {
 				int price = item.getPrice();
 
 				monthlyCost.add(new Pair<String, Integer>(type, price));
@@ -287,7 +287,7 @@ public class Fragment4 extends SherlockFragment {
 		for (ShopList item : shoplist2) {
 			String week = ""+item.getWeek();
 			String type = item.getTypeName();
-			if (week.equals(Fragment3.selected)) {
+			if (week.equals(FragmentStat.selected)) {
 				int price = item.getPrice();
 
 				monthlyCost.add(new Pair<String, Integer>(type, price));
@@ -323,7 +323,7 @@ public class Fragment4 extends SherlockFragment {
 		for (ShopList item : shoplist2) {
 			String month = ""+item.getMonth();
 			String type = item.getTypeName();
-			if (month.equals(Fragment3.selected)) {
+			if (month.equals(FragmentStat.selected)) {
 				int price = item.getPrice();
 
 				monthlyCost.add(new Pair<String, Integer>(type, price));
