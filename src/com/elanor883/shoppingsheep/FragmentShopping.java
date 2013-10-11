@@ -156,7 +156,7 @@ public class Fragment1 extends SherlockFragment {
 			// color =
 			map.put(KEY_TITLE, s.getTypeName());
 			map.put(KEY_SUBTITLE, s.getDate());
-			map.put(KEY_CORNER, "" + s.getPrice() + " ˆ");
+			map.put(KEY_CORNER, "" + s.getPrice() + " ï¿½");
 			itemList.add(map);
 			idArray.add(s.getId());
 			Log.d("shop_id", "" + s.getId());
@@ -439,7 +439,7 @@ public class Fragment1 extends SherlockFragment {
 	 * else if (item.getItemId() == R.id.edit_btn) { Log.d("ContextCheck",
 	 * "edit"); HashMap<String, String> map = new HashMap<String, String>(); //
 	 * color = // map.put(KEY_TITLE, s.getTypeName()); // map.put(KEY_SUBTITLE,
-	 * s.getDate()); // map.put(KEY_CORNER, "" + s.getPrice() + " ˆ"); map =
+	 * s.getDate()); // map.put(KEY_CORNER, "" + s.getPrice() + " ï¿½"); map =
 	 * itemList.get(selectedListItem); String type = map.get(KEY_TITLE); String
 	 * date = map.get(KEY_SUBTITLE); String price[] =
 	 * map.get(KEY_CORNER).split(" ");
@@ -475,7 +475,7 @@ public class Fragment1 extends SherlockFragment {
 			// color =
 			map.put(KEY_TITLE, s.getTypeName());
 			map.put(KEY_SUBTITLE, s.getDate());
-			map.put(KEY_CORNER, "" + s.getPrice() + " ˆ");
+			map.put(KEY_CORNER, "" + s.getPrice() + " ï¿½");
 			itemList.add(map);
 			idArray.add(s.getId());
 			Log.d("idarray", "" + s.getId());
@@ -607,7 +607,7 @@ public class Fragment1 extends SherlockFragment {
 					// color =
 					map.put(KEY_TITLE, cat);
 					map.put(KEY_SUBTITLE, date);
-					map.put(KEY_CORNER, "" + price + " ˆ");
+					map.put(KEY_CORNER, "" + price + " ï¿½");
 					itemList.add(map);
 					// lv.setAdapter(adapter);
 					mAdapterList.notifyDataSetChanged();
