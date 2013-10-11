@@ -614,7 +614,7 @@ public class Fragment3 extends SherlockFragment {
 			// Log.d("datum", "" + year + " " + month + " " + day);
 			map.put(KEY_TITLE, "" + cn.getWeek() + ". week");
 			// map.put(KEY_SUBTITLE, ""+cn.getWeek() + ". week");
-			map.put(KEY_CORNER, "" + cn.getPrice() + " ˆ");
+			map.put(KEY_CORNER, "" + cn.getPrice() + " ï¿½");
 			dateList.add("" + week);
 			listitems.add(map);
 
@@ -654,7 +654,7 @@ public class Fragment3 extends SherlockFragment {
 			 String monthname = new DateFormatSymbols().getMonths()[month-1];
 			map.put(KEY_TITLE, "" + monthname);
 			// map.put(KEY_SUBTITLE, ""+cn.getWeek() + ". week");
-			map.put(KEY_CORNER, "" + cn.getPrice() + " ˆ");
+			map.put(KEY_CORNER, "" + cn.getPrice() + " ï¿½");
 			dateList.add("" + month);
 			listitems.add(map);
 
@@ -690,7 +690,7 @@ public class Fragment3 extends SherlockFragment {
 			Log.d("datum", "" + year + " " + month + " " + day);
 			map.put(KEY_TITLE, date);
 			map.put(KEY_SUBTITLE, dayOfWeek(year, month, day));
-			map.put(KEY_CORNER, "" + cn.getPrice() + " ˆ");
+			map.put(KEY_CORNER, "" + cn.getPrice() + " ï¿½");
 			dateList.add(date);
 			listitems.add(map);
 
