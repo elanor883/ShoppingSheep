@@ -183,7 +183,7 @@ public class Fragment4 extends SherlockFragment {
 			if (current.second != 0) {
 				map.put(KEY_TITLE, current.first);
 				// map.put(KEY_SUBTITLE, "vmi");
-				map.put(KEY_CORNER, "" + current.second + " ˆ");
+				map.put(KEY_CORNER, "" + current.second + " ï¿½");
 				map.put(KEY_IMG, db.getResId(current.first));
 				itemList.add(map);
 			}
@@ -268,7 +268,7 @@ public class Fragment4 extends SherlockFragment {
 		if (current.second != 0) {
 			map.put(KEY_TITLE, current.first);
 			// map.put(KEY_SUBTITLE, "vmi");
-			map.put(KEY_CORNER, "" + current.second + " ˆ");
+			map.put(KEY_CORNER, "" + current.second + " ï¿½");
 			map.put(KEY_IMG, db.getResId(current.first));
 			itemList.add(map);
 		}
@@ -304,7 +304,7 @@ public class Fragment4 extends SherlockFragment {
 		if (current.second != 0) {
 			map.put(KEY_TITLE, current.first);
 			// map.put(KEY_SUBTITLE, "vmi");
-			map.put(KEY_CORNER, "" + current.second + " ˆ");
+			map.put(KEY_CORNER, "" + current.second + " ï¿½");
 			map.put(KEY_IMG, db.getResId(current.first));
 			itemList.add(map);
 		}
@@ -340,7 +340,7 @@ public class Fragment4 extends SherlockFragment {
 		if (current.second != 0) {
 			map.put(KEY_TITLE, current.first);
 			// map.put(KEY_SUBTITLE, "vmi");
-			map.put(KEY_CORNER, "" + current.second + " ˆ");
+			map.put(KEY_CORNER, "" + current.second + " ï¿½");
 			map.put(KEY_IMG, db.getResId(current.first));
 			itemList.add(map);
 		}
