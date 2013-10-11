@@ -419,7 +419,7 @@ public class Fragment2 extends SherlockFragment {
 	 * Log.d("ContextCheck","edit"); /*HashMap<String, String> map = new
 	 * HashMap<String, String>(); // color = // map.put(KEY_TITLE,
 	 * s.getTypeName()); // map.put(KEY_SUBTITLE, s.getDate()); //
-	 * map.put(KEY_CORNER, "" + s.getPrice() + " ˆ"); map =
+	 * map.put(KEY_CORNER, "" + s.getPrice() + " ï¿½"); map =
 	 * itemList.get(selectedListItem); String type = map.get(KEY_TITLE); String
 	 * date = map.get(KEY_SUBTITLE); String price[] =
 	 * map.get(KEY_CORNER).split(" ");
