@@ -1,6 +1,5 @@
 package com.elanor883.shoppingsheep;
 
-
 import java.io.IOException;
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
@@ -38,7 +37,6 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 
-
 public class FragmentStat extends SherlockFragment {
 
 	static final String KEY_TITLE = "title";
@@ -67,7 +65,6 @@ public class FragmentStat extends SherlockFragment {
 	List<String> dateList;
 	Menu mymenu;
 
-
 	@Override
 	public SherlockFragmentActivity getSherlockActivity() {
 		return super.getSherlockActivity();
@@ -78,92 +75,20 @@ public class FragmentStat extends SherlockFragment {
 		super.setUserVisibleHint(isVisibleToUser);
 
 		if (isVisibleToUser) {
-		/*	if (MainActivity.fr3Imp == true) {
-				MainActivity.fr3Imp = false;
-				refreshCurrentFragment();
-			}*/
 
-			if (MainActivity.mymenu != null) {
-				Menu menu = MainActivity.mymenu;
-				//onPrepareOptionsMenu(mymenu);
-				Log.d("mymenu fr1", "called");
-				MenuItem item = menu.findItem(R.id.imp_btn);
-				MenuItem item2 = menu.findItem(R.id.exp_btn);
-				MenuItem item3 = menu.findItem(R.id.last_10);
-				MenuItem item4 = menu.findItem(R.id.last_20);
-				MenuItem item5 = menu.findItem(R.id.all_items);
-				item6 = menu.findItem(R.id.order_daily);
-				item7 = menu.findItem(R.id.order_weekly);
-				item8 = menu.findItem(R.id.order_monthly);
-				item9 = menu.findItem(R.id.back_btn);
-				MenuItem item10 = menu.findItem(R.id.settings_btn1);
-				MenuItem item11 = menu.findItem(R.id.dummy);
-				MenuItem item12 = menu.findItem(R.id.settings_btn3);
-
-				item.setVisible(false);
-				item2.setVisible(false);
-				item3.setVisible(false);
-				item4.setVisible(false);
-				item5.setVisible(false);
-				item10.setVisible(false);
-				item11.setVisible(false);
-				item12.setVisible(true);
-
-				if (!isDetailActive) {
-
-					item6.setVisible(true);
-					item7.setVisible(true);
-					item8.setVisible(true);
-					item9.setVisible(false);
-				}
-
-				else {
-					item6.setVisible(false);
-					item7.setVisible(false);
-					item8.setVisible(false);
-					item9.setVisible(true);
-				}
-
-				if (isLandscape()) {
-					item6.setVisible(true);
-					item7.setVisible(true);
-					item8.setVisible(true);
-					item9.setVisible(false);
-				}
-
-			}
-			
-			Log.d("fr3", "visibility" + FragmentCategories.update);
-			
-			if(FragmentCategories.update == true)
-			{
+			if (FragmentCategories.update == true) {
 				FragmentCategories.update = false;
-				Log.d("fr3", "visibility");
 				groupByDay();
-				
+
 			}
 			setBkg();
-			
+
 			if (adapter != null) {
 				adapter.notifyDataSetChanged();
 			}
 
-			else {
-				Log.d("fr1", "kva anyjat enek a szarnak");
-			}
-			
-
 		}
 
-		else {
-			Log.d("fr1vis", "fos");
-		}
-
-	}
-
-	@Override
-	public void onStart() {
-		super.onStart();
 	}
 
 	@Override
@@ -182,7 +107,6 @@ public class FragmentStat extends SherlockFragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-
 		view = inflater.inflate(R.layout.fragmenttab32, container, false);
 		fr32 = (FrameLayout) view.findViewById(R.id.detail32);
 
@@ -200,7 +124,7 @@ public class FragmentStat extends SherlockFragment {
 		l2 = (LinearLayout) view.findViewById(R.id.sublay);
 
 		if (!isLandscape()) {
-			Log.d("oncreate", "ujra meghivodot");
+
 			LinearLayout.LayoutParams p1 = new LinearLayout.LayoutParams(0,
 					LinearLayout.LayoutParams.WRAP_CONTENT);
 			p1.weight = 1;
@@ -221,8 +145,7 @@ public class FragmentStat extends SherlockFragment {
 
 		else if (group == 1) {
 			groupByWeek();
-		}
-		else if (group == 2) {
+		} else if (group == 2) {
 			groupByMonth();
 		}
 
@@ -230,11 +153,9 @@ public class FragmentStat extends SherlockFragment {
 
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				// Toast.makeText(getBaseContext(), mListItems.get(position),
-				// 1000).show();
+
 				Log.d("frag3", "selected");
 				selected = dateList.get(position);
-
 				view.setSelected(true);
 				pos = position;
 				adapter.setSelectedIndex(position);
@@ -249,60 +170,33 @@ public class FragmentStat extends SherlockFragment {
 					isDetailActive = true;
 				}
 
-				Log.d("detail1", "" + FragmentStat.isDetailActive);
 				showDetails(position);
 			}
 
 		});
 
-		// Click event for single list row
-		/*
-		 * lv.setOnItemClickListener(new OnItemClickListener() {
-		 * 
-		 * public void onItemClick(AdapterView<?> parent, View view, int
-		 * position, long id) {
-		 * 
-		 * } });
-		 */
-
 		if (savedInstanceState != null) {
 			int currentTab = savedInstanceState.getInt("CurrentTab", pos);
 
-			Log.d("current", "" + currentTab);
 			if (isLandscape() && currentTab != -1) {
 				selected = dateList.get(currentTab);
-				Log.d("frag3", selected);
 				view.setSelected(true);
 				adapter.setSelectedIndex(currentTab);
-				Log.d("itemclick", "" + selected + " " + group);
+
 				showDetails(currentTab);
 			}
-			/* Set currently selected tab */
-
-			/*
-			 * boolean isDark = savedInstanceState.getBoolean("DarkBkg", true);
-			 * if (isDark) { view.setBackgroundColor(Color.WHITE); } else {
-			 * view.setBackgroundColor(Color.RED); }
-			 */
 
 		}
 
-		/*
-		 * else{
-		 * 
-		 * view.setBackgroundColor(Color.RED); }
-		 */
 		return view;
 	}
 
 	@Override
 	public void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		Log.d("visszaallit", "" + pos);
 		outState.putInt("CurrentTab", pos);
 		outState.putString("Selected", selected);
-		// outState.putBoolean("DarkBkg", darkbkg);
-		Log.d("vissza", "vissza");
+
 		setUserVisibleHint(true);
 	}
 
@@ -370,18 +264,6 @@ public class FragmentStat extends SherlockFragment {
 			ft.commit();
 
 		}
-		/*
-		 * else {
-		 * 
-		 * Intent intent = new Intent(); intent.setClass(this,
-		 * DetailsActivity.class); intent.putExtra("index", index);
-		 * startActivity(intent); }
-		 */
-
-	}
-
-	public void onResume() {
-		super.onResume();
 
 	}
 
@@ -389,28 +271,6 @@ public class FragmentStat extends SherlockFragment {
 		// TODO Auto-generated method stub
 		pos = ind;
 	}
-
-	/*
-	 * 
-	 * public void onPrepareOptionsMenu(Menu menu) {
-	 * 
-	 * /* if(){ menu.findItem(R.id.settings_btn).setVisible(true);
-	 * 
-	 * } else{
-	 */
-	// menu.findItem(R.id.settings_btn).setVisible(false);
-	// }
-
-	// }
-	/*
-	@Override
-	public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-	    // TODO Add your menu entries here
-		inflater = getSherlockActivity().getSupportMenuInflater();
-		inflater.inflate(R.menu.fr3_menu, menu);
-	    super.onCreateOptionsMenu(menu, inflater);
-	}
-	*/
 
 	@Override
 	public void onPrepareOptionsMenu(Menu menu) {
@@ -468,28 +328,24 @@ public class FragmentStat extends SherlockFragment {
 
 		case R.id.settings_btn3:
 
-			Log.d("fr3b", "settings");
-		//	settingsMenu();
-
 			return false;
 
 		case R.id.back_btn:
 
-			Log.d("fragment3", "baaaack to the futureeee");
 			refreshMainFragment();
 			return true;
 
 		case R.id.order_daily:
 			groupByDay();
 			group = 0;
-			Log.d("groupbyday", "bullshit");
+
 			if (!isLandscape()) {
 				refreshMainFragment();
 			}
 			return true;
 		case R.id.order_weekly:
 			groupByWeek();
-			Log.d("groupbywek", "bullshit");
+
 			group = 1;
 			if (!isLandscape()) {
 				refreshMainFragment();
@@ -497,7 +353,7 @@ public class FragmentStat extends SherlockFragment {
 			return true;
 		case R.id.order_monthly:
 			groupByMonth();
-			Log.d("groupbymonth", "bullshit");
+
 			group = 2;
 			if (!isLandscape()) {
 				refreshMainFragment();
@@ -511,20 +367,12 @@ public class FragmentStat extends SherlockFragment {
 
 	public void refreshCurrentFragment() {
 		if (isDetailActive) {
-			/*
-			 * Log.d("fr32222", "detail-settings"); FragmentTab3b2 aFrag = new
-			 * FragmentTab3b2(); FragmentTransaction ft =
-			 * getFragmentManager().beginTransaction();
-			 * ft.replace(R.id.detail32, aFrag); // ft.addToBackStack(null);
-			 * ft.commit();
-			 */
 
 		}
 
 		else {
-			Log.d("fr32222", "detail-settings");
 			FragmentStat fr3 = new FragmentStat();
-			// ((ShopListViewAdapter)(FragmentTab3b.lv.getAdapter())).notifyDataSetChanged();
+
 			FragmentTransaction ft = getFragmentManager().beginTransaction();
 			ft.replace(R.id.detail32, fr3);
 
@@ -532,31 +380,25 @@ public class FragmentStat extends SherlockFragment {
 	}
 
 	public void settingsMenu() {
-		
-		
+
 		if (MainActivity.dark_bkg == true) {
-			
+
 			MainActivity.dark_bkg = false;
 			setBkg();
-			//view.setBackgroundColor(Color.parseColor("#f1f1f2"));
-			Log.d("fr3", "settings - change to white" + MainActivity.dark_bkg);
 
 		} else {
-			
+
 			MainActivity.dark_bkg = true;
 			setBkg();
-			//view.setBackgroundColor(Color.BLACK);
-			
-			Log.d("fr3", "settings - change to black" + MainActivity.dark_bkg);
 
 		}
 
 		if (isDetailActive) {
-			Log.d("fr32222", "detail-settings");
+
 			FragmentDetail aFrag = new FragmentDetail();
 			FragmentTransaction ft = getFragmentManager().beginTransaction();
 			ft.replace(R.id.detail32, aFrag);
-			// ft.addToBackStack(null);
+
 			ft.commit();
 		}
 		adapter.notifyDataSetChanged();
@@ -580,17 +422,14 @@ public class FragmentStat extends SherlockFragment {
 	public void refreshMainFragment() {
 		FragmentStat.pos = -1;
 		FragmentStat fr3 = new FragmentStat();
-		// ((ShopListViewAdapter)(FragmentTab3b.lv.getAdapter())).notifyDataSetChanged();
+
 		FragmentTransaction ft = getFragmentManager().beginTransaction();
 		ft.replace(R.id.detail32, fr3);
 
 		FragmentStat.isDetailActive = false;
-		// fr3.setPos(-1);
-		Log.d("visszaallit", "" + FragmentStat.pos);
-		// ft.addToBackStack(null);
+
 		ft.commit();
 
-		Log.d("detail2", "" + FragmentStat.isDetailActive);
 	}
 
 	public void groupByWeek() {
@@ -603,26 +442,16 @@ public class FragmentStat extends SherlockFragment {
 		for (ShopList cn : shopitems) {
 			String log = "Category: " + cn.getTypeName() + " ,Price: "
 					+ cn.getPrice();
-			// Writing Contacts to log
+
 			HashMap<String, String> map = new HashMap<String, String>();
-			/*
-			 * String date = cn.getDate(); int year =
-			 * Integer.parseInt(date.substring(0, 4)); int month =
-			 * Integer.parseInt(date.substring(5, 7)); int day =
-			 * Integer.parseInt(date.substring(8, 10));
-			 */int week = cn.getWeek();
-			// Log.d("datum", "" + year + " " + month + " " + day);
+			int week = cn.getWeek();
+
 			map.put(KEY_TITLE, "" + cn.getWeek() + ". week");
-			// map.put(KEY_SUBTITLE, ""+cn.getWeek() + ". week");
-			map.put(KEY_CORNER, "" + cn.getPrice() + " ï¿½");
+
+			map.put(KEY_CORNER, "" + cn.getPrice() + " ˆ");
 			dateList.add("" + week);
 			listitems.add(map);
 
-			Log.d("Name: ", log);
-		}
-		ArrayList<String> cat = db.getCategories();
-		for (String c : cat) {
-			Log.d("cat", c);
 		}
 
 		db.close();
@@ -642,23 +471,18 @@ public class FragmentStat extends SherlockFragment {
 		for (ShopList cn : shopitems) {
 			String log = "Category: " + cn.getTypeName() + " ,Price: "
 					+ cn.getPrice();
-			// Writing Contacts to log
+
 			HashMap<String, String> map = new HashMap<String, String>();
-			/*
-			 * String date = cn.getDate(); int year =
-			 * Integer.parseInt(date.substring(0, 4)); int month =
-			 * Integer.parseInt(date.substring(5, 7)); int day =
-			 * Integer.parseInt(date.substring(8, 10));
-			 */int month = cn.getMonth();
-			// Log.d("datum", "" + year + " " + month + " " + day);
-			 String monthname = new DateFormatSymbols().getMonths()[month-1];
+
+			int month = cn.getMonth();
+
+			String monthname = new DateFormatSymbols().getMonths()[month - 1];
 			map.put(KEY_TITLE, "" + monthname);
-			// map.put(KEY_SUBTITLE, ""+cn.getWeek() + ". week");
-			map.put(KEY_CORNER, "" + cn.getPrice() + " ï¿½");
+
+			map.put(KEY_CORNER, "" + cn.getPrice() + " ˆ");
 			dateList.add("" + month);
 			listitems.add(map);
 
-			Log.d("Name: ", log);
 		}
 
 		db.close();
@@ -667,7 +491,7 @@ public class FragmentStat extends SherlockFragment {
 		lv.setAdapter(adapter);
 
 	}
-	
+
 	public void groupByDay() {
 		dateList = new ArrayList<String>();
 
@@ -687,18 +511,12 @@ public class FragmentStat extends SherlockFragment {
 			int month = Integer.parseInt(date.substring(5, 7));
 			int day = Integer.parseInt(date.substring(8, 10));
 
-			Log.d("datum", "" + year + " " + month + " " + day);
 			map.put(KEY_TITLE, date);
 			map.put(KEY_SUBTITLE, dayOfWeek(year, month, day));
-			map.put(KEY_CORNER, "" + cn.getPrice() + " ï¿½");
+			map.put(KEY_CORNER, "" + cn.getPrice() + " ˆ");
 			dateList.add(date);
 			listitems.add(map);
 
-			Log.d("Name: ", log);
-		}
-		ArrayList<String> cat = db.getCategories();
-		for (String c : cat) {
-			Log.d("cat", c);
 		}
 
 		db.close();
@@ -706,11 +524,10 @@ public class FragmentStat extends SherlockFragment {
 		adapter = new ShopListViewAdapter(getActivity(), listitems);
 		lv.setAdapter(adapter);
 	}
-	
-	public void setBkg()
-	{
+
+	public void setBkg() {
 		if (MainActivity.dark_bkg == false && view != null) {
-			// ((MainActivity) parent).activePage = 1;
+
 			view.setBackgroundColor(Color.parseColor("#f1f1f2"));
 		} else if (MainActivity.dark_bkg == true && view != null) {
 			view.setBackgroundColor(Color.BLACK);

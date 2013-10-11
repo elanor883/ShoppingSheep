@@ -5,49 +5,39 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.RelativeLayout.LayoutParams;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
-
 
 public class FragmentCategories extends SherlockFragment {
 
 	String text = "0";
-	String color = "R.drawable.btn1bg";
+	String color;
 	int c_id = 0;
 	static final String KEY_COLOR = "color";
 	static final String KEY_TYPE = "category";
 	ArrayList<HashMap<String, String>> labelList = new ArrayList<HashMap<String, String>>();
-	int resid = 0;
+	int resid;
 	Button selected;
 
 	LayoutInflater mInflater;
@@ -78,59 +68,14 @@ public class FragmentCategories extends SherlockFragment {
 
 	}
 
-	public void onAttach(Activity activity) {
-		super.onAttach(activity);
-		/*
-		 * try { mListener = (OnArticleSelectedListener) activity; } catch
-		 * (ClassCastException e) { throw new
-		 * ClassCastException(activity.toString() +
-		 * " must implement OnArticleSelectedListener"); }
-		 */
-
-		Log.d("fr2", "onattach");
-		// adapter.notifyDataSetChanged();
-	}
-
 	@Override
 	public void setUserVisibleHint(boolean isVisibleToUser) {
 		super.setUserVisibleHint(isVisibleToUser);
 
-		Log.d("visiblefr2", "" + MainActivity.fr1Imp);
 		if (isVisibleToUser) {
-
-			if (MainActivity.mymenu != null) {
-				Menu menu = MainActivity.mymenu;
-				MenuItem item = menu.findItem(R.id.imp_btn);
-				MenuItem item2 = menu.findItem(R.id.exp_btn);
-				MenuItem item3 = menu.findItem(R.id.last_10);
-				MenuItem item4 = menu.findItem(R.id.last_20);
-				MenuItem item5 = menu.findItem(R.id.all_items);
-				MenuItem item6 = menu.findItem(R.id.order_daily);
-				MenuItem item7 = menu.findItem(R.id.order_weekly);
-				MenuItem item8 = menu.findItem(R.id.order_monthly);
-				MenuItem item9 = menu.findItem(R.id.back_btn);
-				MenuItem item10 = menu.findItem(R.id.settings_btn1);
-				MenuItem item11 = menu.findItem(R.id.dummy);
-				
-				MenuItem item12 = menu.findItem(R.id.settings_btn3);
-				item.setVisible(false);
-				item2.setVisible(false);
-				item3.setVisible(false);
-				item4.setVisible(false);
-				item5.setVisible(false);
-				item6.setVisible(false);
-				item7.setVisible(false);
-				item8.setVisible(false);
-				item9.setVisible(false);
-				item10.setVisible(false);
-				item11.setVisible(false);
-				item12.setVisible(false);
-
-			}
 
 			if (MainActivity.fr2Imp == true) {
 				MainActivity.fr2Imp = false;
-				Log.d("fragment2", "visible import");
 				refreshCurrentFragment();
 			}
 
@@ -140,12 +85,6 @@ public class FragmentCategories extends SherlockFragment {
 				adapter.notifyDataSetChanged();
 			}
 
-			else {
-				Log.d("fr2", "kva anyjat enek a szarnak");
-			}
-
-		} else {
-			Log.d("fr1vis", "fos");
 		}
 
 	}
@@ -160,18 +99,8 @@ public class FragmentCategories extends SherlockFragment {
 	}
 
 	@Override
-	public void onStart() {
-		super.onStart();
-	}
-
-	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		// Get the view from fragmenttab1.xml
-
-		// super.onCreate(savedInstanceState);
-		// if(null == savedInstanceState){
-		// set you initial fragment object
 
 		view = inflater.inflate(R.layout.fragmenttab2, container, false);
 		registerForContextMenu(view.findViewById(R.id.cat_lv));
@@ -182,7 +111,7 @@ public class FragmentCategories extends SherlockFragment {
 
 		resid = R.drawable.btn15bg;
 		color = "" + resid;
-		
+
 		setBkg();
 		setHasOptionsMenu(true);
 
@@ -194,18 +123,14 @@ public class FragmentCategories extends SherlockFragment {
 		labelList.clear();
 		for (Categories c : clist) {
 			HashMap<String, String> map = new HashMap<String, String>();
-			// color =
+
 			map.put(KEY_COLOR, c.getResid());
 			map.put(KEY_TYPE, c._type_name);
 			Log.d("cat_id", "" + c.getId());
 			labelList.add(map);
 		}
-		// adapter.notifyDataSetChanged();
 
 		db.close();
-
-		// ArrayList<HashMap<String, String>> labelList = new
-		// ArrayList<HashMap<String, String>>();
 
 		adapter = new LabelListAdapter(getActivity(), labelList);
 
@@ -224,23 +149,15 @@ public class FragmentCategories extends SherlockFragment {
 		lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
 
 			public boolean onItemLongClick(AdapterView<?> adapterView,
-					View view, int index, long arg3) { // item: "string line"
-														// that user click
-														// //View
+					View view, int index, long arg3) {
 
 				selectedListItem = index;
-				/*
-				 * HashMap<String, String> map = new HashMap<String, String>();
-				 * map = labelList.get(selectedListItem); selectedCat =
-				 * map.get(KEY_TYPE);
-				 */
+
 				selectedCat = clist.get(selectedListItem).getTypeName();
 				selectedId = clist.get(selectedListItem).getId();
 				selectedResid = clist.get(selectedListItem).getResid();
-				Log.d("longclick", "" + selectedResid);
 
 				openMenuDialog();
-				Log.d("Item has been clicked is :", " " + index);
 				return true;
 			}
 		});
@@ -261,38 +178,6 @@ public class FragmentCategories extends SherlockFragment {
 		return s.matches("[a-zA-Z]+");
 	}
 
-	/*
-	 * public boolean onMenuItemSelected(int featureId, MenuItem item) {
-	 * DatabaseHandler db; switch (item.getItemId()) {
-	 * 
-	 * case R.id.imp_exp_btn: // write your code here
-	 * 
-	 * return true;
-	 * 
-	 * case R.id.settings_btn:
-	 * 
-	 * //dark_bkg = false;
-	 * 
-	 * return true;
-	 * 
-	 * default: break;
-	 * 
-	 * } return true; }
-	 */
-	
-
-	 
-
-	public void not() {
-
-		adapter.notifyDataSetChanged();
-	}
-
-	public void onResume() {
-		super.onResume();
-		Log.d("fr2", "onresume");
-	}
-
 	public void refreshCurrentFragment() {
 		FragmentCategories fragment = new FragmentCategories();
 		FragmentTransaction ft = getFragmentManager().beginTransaction();
@@ -302,22 +187,16 @@ public class FragmentCategories extends SherlockFragment {
 	}
 
 	public void settingsMenu() {
-		Log.d("fr2", "settings bkg: " + MainActivity.dark_bkg);
-
 		if (MainActivity.dark_bkg == true) {
-			
+
 			MainActivity.dark_bkg = false;
 			setBkg();
-			//view.setBackgroundColor(Color.parseColor("#f1f1f2"));
-			Log.d("fr3", "settings - change to white" + MainActivity.dark_bkg);
 
 		} else {
-			
+
 			MainActivity.dark_bkg = true;
 			setBkg();
-			//view.setBackgroundColor(Color.BLACK);
-			
-			Log.d("fr3", "settings - change to black" + MainActivity.dark_bkg);
+
 		}
 
 		adapter.notifyDataSetChanged();
@@ -353,7 +232,7 @@ public class FragmentCategories extends SherlockFragment {
 		MenuItem item8 = menu.findItem(R.id.order_monthly);
 		MenuItem item9 = menu.findItem(R.id.back_btn);
 		MenuItem item10 = menu.findItem(R.id.settings_btn1);
-		MenuItem item11 = menu.findItem(R.id.dummy);	
+		MenuItem item11 = menu.findItem(R.id.dummy);
 		MenuItem item12 = menu.findItem(R.id.settings_btn3);
 		item.setVisible(false);
 		item2.setVisible(false);
@@ -373,71 +252,16 @@ public class FragmentCategories extends SherlockFragment {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		DatabaseHandler db;
 		switch (item.getItemId()) {
-	
+
 		case R.id.dummy:
-	
-			//MainActivity.dark_bkg = true;
-		//	settingsMenu();
-	
 			return false;
 
 		default:
 			break;
-	
+
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
-	/*
-	 * @Override public void onCreateContextMenu(ContextMenu menu, View v,
-	 * ContextMenuInfo menuInfo) { super.onCreateContextMenu(menu, v, menuInfo);
-	 * Log.d("fr2", "nyom"); if (v.getId()==R.id.cat_lv) {
-	 * AdapterView.AdapterContextMenuInfo info =
-	 * (AdapterView.AdapterContextMenuInfo)menuInfo; selectedListItem =
-	 * info.position; HashMap<String, String> map = new HashMap<String,
-	 * String>(); map = labelList.get(selectedListItem); selectedCat =
-	 * map.get(KEY_TYPE); menu.setHeaderTitle(""+info.position + " "+
-	 * map.get(KEY_TYPE)); //menu.setHeaderTitle("Menu");
-	 * android.view.MenuInflater inflater =
-	 * getSherlockActivity().getMenuInflater(); inflater.inflate(R.menu.main3,
-	 * menu);
-	 * 
-	 * Log.d("fr2", "nyommm"); } }
-	 * 
-	 * 
-	 * public boolean onContextItemSelected(android.view.MenuItem item) {
-	 * DatabaseHandler db = new DatabaseHandler(getActivity());
-	 * //db.deleteShopRow(idArray.get(selectedListItem)); if(item.getItemId() ==
-	 * R.id.delete_btn2) { Log.d("ContextCheck","EDIT!ttt"); //toast =
-	 * Toast.makeText(this, "Edit!", Toast.LENGTH_SHORT); //toast.show();
-	 * //db.deleteContact(clist.get(selectedListItem));
-	 * //db.deleteShopRow(idArray.get(selectedListItem));
-	 * //db.deleteContact(clist.get(selectedListItem));
-	 * db.deleteCategory(selectedCat); }
-	 * 
-	 * else if(item.getItemId() == R.id.edit_btn2) {
-	 * Log.d("ContextCheck","edit"); /*HashMap<String, String> map = new
-	 * HashMap<String, String>(); // color = // map.put(KEY_TITLE,
-	 * s.getTypeName()); // map.put(KEY_SUBTITLE, s.getDate()); //
-	 * map.put(KEY_CORNER, "" + s.getPrice() + " �"); map =
-	 * itemList.get(selectedListItem); String type = map.get(KEY_TITLE); String
-	 * date = map.get(KEY_SUBTITLE); String price[] =
-	 * map.get(KEY_CORNER).split(" ");
-	 * 
-	 * Log.d("edit", date + " " + type + " " + price[0]);
-	 * 
-	 * openItemDialog(true, type, date, price[0]); //toast =
-	 * Toast.makeText(this, "Edit!", Toast.LENGTH_SHORT); //toast.show();
-	 * //db.deleteContact(clist.get(selectedListItem)); //
-	 * db.deleteShopRow(idArray.get(selectedListItem));
-	 * //db.deleteContact(clist.get(selectedListItem));
-	 * 
-	 * }
-	 * 
-	 * //Log.d("nyomos", ""+selectedListItem + " "+
-	 * idArray.get(selectedListItem)); //refreshLastFewElements(10); db.close();
-	 * return true; }
-	 */
 
 	public void openMenuDialog() {
 		// custom dialog
@@ -459,7 +283,6 @@ public class FragmentCategories extends SherlockFragment {
 
 				update = true;
 				openCategoryDialog(true);
-				// refreshCurrentFragment();
 				dialog.dismiss();
 
 			}
@@ -470,8 +293,7 @@ public class FragmentCategories extends SherlockFragment {
 			public void onClick(View v) {
 
 				update = true;
-				
-				Log.d("ContextCheck", "DELETE");
+
 				AlertDialog.Builder builder1 = new AlertDialog.Builder(
 						getSherlockActivity());
 				builder1.setTitle("Delete category");
@@ -481,7 +303,6 @@ public class FragmentCategories extends SherlockFragment {
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog, int id) {
 
-								Log.d("ContextCheck", "EDIT!ttt");
 								db.deleteCategory(selectedCat);
 								refreshCurrentFragment();
 								db.close();
@@ -526,7 +347,6 @@ public class FragmentCategories extends SherlockFragment {
 		}
 		final TextView textCheck = (TextView) dialog
 				.findViewById(R.id.textCheck);
-		// text.setText("Android custom dialog example!");
 
 		final Button btn1 = (Button) dialog.findViewById(R.id.button_1);
 		btn1.setOnTouchListener(new OnTouchListener() {
@@ -920,11 +740,7 @@ public class FragmentCategories extends SherlockFragment {
 		});
 
 		Button dialogButton = (Button) dialog.findViewById(R.id.dialog_button2);
-		// if button is clicked, close the custom dialog
 
-		/*
-		 * for(String c: cat) { Log.d("cat", c); array_spinner[i++]=c; }
-		 */
 		dialogButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -940,11 +756,11 @@ public class FragmentCategories extends SherlockFragment {
 					}
 				}
 				db.close();
-				if (checkString(text) && isTypeExist == false ) {
+				if (checkString(text) && isTypeExist == false) {
 					textCheck.setText("Correct");
 
 					Categories categ = new Categories(text, color, c_id);
-					Log.d("szoveg", text);
+
 					DatabaseHandler db1 = new DatabaseHandler(
 							getSherlockActivity());
 
@@ -957,20 +773,18 @@ public class FragmentCategories extends SherlockFragment {
 
 					}
 					HashMap<String, String> map = new HashMap<String, String>();
-					// color =
+
 					map.put(KEY_COLOR, color);
 					map.put(KEY_TYPE, "" + text);
 					labelList.add(map);
-					
-					adapter.notifyDataSetChanged();
-					Log.d("color", color);
 
-					// Button btn = view.findViewById(R.id.list_button);
+					adapter.notifyDataSetChanged();
+
 					db1.close();
 					dialog.dismiss();
 				}
 
-				else if (checkString(text) && text.equals(selectedCat) ) {
+				else if (checkString(text) && text.equals(selectedCat)) {
 					DatabaseHandler db1 = new DatabaseHandler(
 							getSherlockActivity());
 					db1.updateCategory(selectedCat, text, color, selectedId);
